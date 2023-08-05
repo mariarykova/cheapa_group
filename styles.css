@@ -614,3 +614,65 @@ body {
     width: 320px;
   }
 }
+
+.slider-track-carousel .card_container {
+  width: 320px;
+}
+
+.slider-carousel {
+  position: relative;
+  width: 1200px;
+
+  margin: 50px auto 0;
+  /* Чтобы во время перетаскивания слайда ничего не выделить внутри него */
+  user-select: none;
+  /* Чтобы запретить скролл страницы, если мы начали двигать слайдер по оси X */
+  touch-action: pan-y;
+}
+
+/* Если где-то внутри слайдера будут изображения,
+  то нужно задать им pointer-events: none,
+  чтобы они не перетаскивались мышью */
+
+.slider-carousel img {
+  poiner-events: none;
+}
+
+.slider-list-carousel {
+  width: 1200px;
+  height: 375px;
+  overflow: hidden;
+}
+
+.slider-list-carousel.grab {
+  cursor: grab;
+}
+
+.slider-list-carousel.grabbing {
+  cursor: grabbing;
+}
+
+.slider-track-carousel {
+  display: flex;
+  gap: 20px;
+}
+
+.slider-arrows {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.next,
+.prev {
+  background: none;
+  border: none;
+  margin: 0 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.next.disabled,
+.prev.disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}

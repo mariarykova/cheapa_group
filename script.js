@@ -136,7 +136,6 @@ let startPosition = 0;
 let currentTranslate = 0;
 let prevTranslate = 0;
 
-// Touch events
 carousel.addEventListener("touchstart", touchStart);
 carousel.addEventListener("touchmove", touchMove);
 carousel.addEventListener("touchend", touchEnd);
@@ -145,34 +144,138 @@ carousel.addEventListener("touchcancel", touchEnd);
 function touchStart(event) {
   isDragging = true;
   startPosition = getPositionX(event);
-  animationID = requestAnimationFrame(animation);
+  currentTranslate = currentPosition;
 }
 
 function touchMove(event) {
   if (isDragging) {
-    const currentPosition = getPositionX(event);
-    currentTranslate = prevTranslate + currentPosition - startPosition;
+    const currentPositionX = getPositionX(event);
+    currentTranslate = prevTranslate + currentPositionX - startPosition;
   }
 }
 
 function touchEnd() {
   isDragging = false;
-  cancelAnimationFrame(animationID);
+  currentPosition = currentTranslate;
 
-  // Adjust the currentTranslate so that the carousel snaps to the nearest card
-  const slideWidth = carousel.clientWidth;
-  currentIndex = Math.round(-currentTranslate / slideWidth);
-  prevTranslate = -currentIndex * slideWidth;
+  const carouselWidth = carousel.offsetWidth;
+  const maxPosition = carousel.scrollWidth - carouselWidth;
 
-  // Calculate the new position for the carousel based on the currentIndex
-  const newPosition = -currentIndex * slideWidth;
-  moveCarouselTouch(newPosition);
+  // Snap to the nearest card
+  const slideWidth = carouselWidth / slideStep;
+  let currentIndex = Math.round(-currentPosition / slideWidth);
+  currentIndex = Math.max(
+    0,
+    Math.min(currentIndex, carousel.children.length - slideStep)
+  );
+  currentPosition = -currentIndex * slideWidth;
+
+  // Prevent carousel from going out of bounds
+  currentPosition = Math.max(-maxPosition, Math.min(0, currentPosition));
+
+  moveCarouselMob(currentPosition);
+}
+
+function moveCarouselMob(newPosition) {
+  carousel.style.transform = `translateX(${newPosition}px)`;
 }
 
 function getPositionX(event) {
-  return event.type.includes("mouse") ? event.pageX : event.touches[0].clientX;
+  return event.touches ? event.touches[0].clientX : event.clientX;
 }
 
-function moveCarouselTouch(newPosition) {
-  carousel.style.transform = `translateX(${newPosition}px)`;
-}
+// TOUCH
+
+let slider = document.querySelector(".slider-carousel"),
+  sliderList = slider.querySelector(".slider-list-carousel"),
+  sliderTrack = slider.querySelector(".slider-track-carousel"),
+  slides = slider.querySelectorAll(".slides-carousel"),
+  arrows = slider.querySelector(".slider-arrows"),
+  prev = arrows.children[0],
+  next = arrows.children[1],
+  slideWidth = slides[0].offsetWidth,
+  slideIndex = 0,
+  posInit = 0,
+  posX1 = 0,
+  posX2 = 0,
+  posFinal = 0,
+  posThreshold = slideWidth * 0.35,
+  transition = true,
+  trfRegExp = /[-0-9.]+(?=px)/,
+  getEvent = function () {
+    return event.type.search("touch") !== -1 ? event.touches[0] : event;
+  },
+  slide = function () {
+    if (transition) {
+      sliderTrack.style.transition = "transform .5s";
+    }
+    sliderTrack.style.transform = `translate3d(-${
+      slideIndex * slideWidth
+    }px, 0px, 0px)`;
+
+    prev.classList.toggle("disabled", slideIndex === 0);
+    next.classList.toggle("disabled", slideIndex === 2);
+  },
+  swipeStart = function () {
+    let evt = getEvent();
+
+    posInit = posX1 = evt.clientX;
+
+    sliderTrack.style.transition = "";
+
+    document.addEventListener("touchmove", swipeAction);
+    document.addEventListener("mousemove", swipeAction);
+    document.addEventListener("touchend", swipeEnd);
+    document.addEventListener("mouseup", swipeEnd);
+  },
+  swipeAction = function () {
+    let evt = getEvent(),
+      style = sliderTrack.style.transform,
+      transform = +style.match(trfRegExp)[0];
+
+    posX2 = posX1 - evt.clientX;
+    posX1 = evt.clientX;
+
+    sliderTrack.style.transform = `translate3d(${
+      transform - posX2
+    }px, 0px, 0px)`;
+  },
+  swipeEnd = function () {
+    posFinal = posInit - posX1;
+
+    document.removeEventListener("touchmove", swipeAction);
+    document.removeEventListener("mousemove", swipeAction);
+    document.removeEventListener("touchend", swipeEnd);
+    document.removeEventListener("mouseup", swipeEnd);
+
+    if (Math.abs(posFinal) > posThreshold) {
+      if (posInit < posX1) {
+        slideIndex--;
+      } else if (posInit > posX1) {
+        slideIndex++;
+      }
+    }
+
+    if (posInit !== posX1) {
+      slide();
+    }
+  };
+
+sliderTrack.style.transform = "translate3d(0px, 0px, 0px)";
+
+slider.addEventListener("touchstart", swipeStart);
+slider.addEventListener("mousedown", swipeStart);
+
+arrows.addEventListener("click", function () {
+  let target = event.target;
+
+  if (target === next) {
+    slideIndex++;
+  } else if (target === prev) {
+    slideIndex--;
+  } else {
+    return;
+  }
+
+  slide();
+});
