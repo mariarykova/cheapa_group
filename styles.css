@@ -151,7 +151,7 @@ body {
 
 .gallery_title {
   font-size: 48px;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   font-weight: 700;
   color: #262626;
 }
@@ -249,6 +249,7 @@ body {
   width: 200px;
   font-size: 24px;
   transition: 0.2s ease-in-out;
+  margin-top: 30px;
 }
 
 .gallery_btn:hover {
@@ -478,12 +479,79 @@ body {
   }
 }
 
+/* TOUCH */
+
+.slider-track-carousel .card_container {
+  width: 320px;
+}
+
+.slider-carousel {
+  position: relative;
+  width: 1200px;
+
+  margin: 50px auto 0;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.slider-carousel img {
+  poiner-events: none;
+}
+
+.slider-list-carousel {
+  width: 1200px;
+  height: 375px;
+  overflow: hidden;
+}
+
+.slider-list-carousel.grab {
+  cursor: grab;
+}
+
+.slider-list-carousel.grabbing {
+  cursor: grabbing;
+}
+
+.slider-track-carousel {
+  display: flex;
+  gap: 20px;
+}
+
+.slider-arrows {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.next,
+.prev {
+  background: none;
+  border: none;
+  margin: 0 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.next.disabled,
+.prev.disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
 @media (max-width: 1200px) {
   .carousel-container {
     width: 100%;
   }
   .carousel {
     width: 70%;
+  }
+
+  .slider-carousel {
+    width: 900px;
+  }
+
+  .slider-list-carousel {
+    width: 900px;
+    height: 375px;
   }
 }
 
@@ -519,6 +587,15 @@ body {
   }
   .carousel {
     width: 90%;
+  }
+
+  .slider-carousel {
+    width: 650px;
+  }
+
+  .slider-list-carousel {
+    width: 650px;
+    height: 375px;
   }
 }
 
@@ -613,66 +690,13 @@ body {
   .car_image_card_gallery {
     width: 320px;
   }
-}
 
-.slider-track-carousel .card_container {
-  width: 320px;
-}
+  .slider-carousel {
+    width: 320px;
+  }
 
-.slider-carousel {
-  position: relative;
-  width: 1200px;
-
-  margin: 50px auto 0;
-  /* Чтобы во время перетаскивания слайда ничего не выделить внутри него */
-  user-select: none;
-  /* Чтобы запретить скролл страницы, если мы начали двигать слайдер по оси X */
-  touch-action: pan-y;
-}
-
-/* Если где-то внутри слайдера будут изображения,
-  то нужно задать им pointer-events: none,
-  чтобы они не перетаскивались мышью */
-
-.slider-carousel img {
-  poiner-events: none;
-}
-
-.slider-list-carousel {
-  width: 1200px;
-  height: 375px;
-  overflow: hidden;
-}
-
-.slider-list-carousel.grab {
-  cursor: grab;
-}
-
-.slider-list-carousel.grabbing {
-  cursor: grabbing;
-}
-
-.slider-track-carousel {
-  display: flex;
-  gap: 20px;
-}
-
-.slider-arrows {
-  margin-top: 15px;
-  text-align: center;
-}
-
-.next,
-.prev {
-  background: none;
-  border: none;
-  margin: 0 10px;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.next.disabled,
-.prev.disabled {
-  opacity: 0.25;
-  pointer-events: none;
+  .slider-list-carousel {
+    width: 320px;
+    height: 375px;
+  }
 }

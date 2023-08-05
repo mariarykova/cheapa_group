@@ -1,71 +1,6 @@
-const carousel = document.querySelector(".carousel");
-const prevBtn = document.querySelector(".arrow-right");
-const nextBtn = document.querySelector(".arrow-left");
-const prevBtnMobile = document.querySelector(".arrow-left-mobile");
-const nextBtnMobile = document.querySelector(".arrow-right-mobile");
-
-fetch("./data.json")
-  .then((response) => response.json())
-  .then((data) => {
-    showCarCardsCarousel(data);
-  })
-  .catch((error) => {
-    console.error("Error fetching carousel data:", error);
-  });
-
-const slideStep = 1;
-const slideDistance = 345;
-let currentPosition = 0;
-
-function moveCarousel(direction) {
-  const carouselWidth = carousel.offsetWidth;
-  const maxPosition = carousel.scrollWidth - carouselWidth;
-  const newPosition =
-    direction === "left"
-      ? currentPosition - slideStep * slideDistance
-      : currentPosition + slideStep * slideDistance;
-
-  if (newPosition <= 0 && newPosition >= -maxPosition) {
-    carousel.style.transform = `translateX(${newPosition}px)`;
-    currentPosition = newPosition;
-  }
-}
-
-prevBtn.addEventListener("click", () => moveCarousel("right"));
-nextBtn.addEventListener("click", () => moveCarousel("left"));
-prevBtnMobile.addEventListener("click", () => moveCarousel("left"));
-nextBtnMobile.addEventListener("click", () => moveCarousel("right"));
-
-function showCarCardsCarousel(data) {
-  let carouselNew = "";
-
-  for (let i = 0; i < 6; i++) {
-    const images = data[i].images.map((image) => {
-      return `<img class="car_image_card" src=${image.img} alt="" />`;
-    });
-    const newImages = images.join(" ");
-    carouselNew += `<div class="card_container">
-    <div class="slider-container">
-    <div class="slider">
-         <div class="slides">${newImages}</div>
-    </div>
-    <button class="prev-btn">Previous</button>
-    <button class="next-btn">Next</button>
-</div> 
-                <div class="card_car_info">
-                  <div class="card_car_title">${data[i].title}</div>
-                  <div class="card_car_year"><strong>Year:</strong> ${data[i].year}</div>
-                  <div class="card_car_model"><strong>Model:</strong> ${data[i].model}</div>
-                  <div class="card_car_make"><strong>Make:</strong> ${data[i].make}</div>
-                  <div class="card_car_description"><strong>Desription:</strong> ${data[i].description}</div>
-                </div>
-              </div>
-    `;
-  }
-  carousel.innerHTML = carouselNew;
-}
-
 // SLIDE FUNCTION
+
+const cards = document.querySelectorAll(".card_container");
 
 function createSlider(card) {
   const slider = card.querySelector(".slider");
@@ -94,28 +29,9 @@ function createSlider(card) {
   showSlide(currentIndex);
 }
 
-function observeCardGallery() {
-  const cardContainer = document.querySelector(".carousel");
-
-  const observer = new MutationObserver((mutationsList) => {
-    mutationsList.forEach((mutation) => {
-      if (mutation.type === "childList") {
-        mutation.addedNodes.forEach((node) => {
-          if (node.classList && node.classList.contains("card_container")) {
-            const cards = document.querySelectorAll(".card_container");
-            cards.forEach((card) => {
-              createSlider(card);
-            });
-          }
-        });
-      }
-    });
-  });
-
-  observer.observe(cardContainer, { childList: true });
-}
-
-observeCardGallery();
+cards.forEach((card) => {
+  createSlider(card);
+});
 
 // BURGER FUNCTION
 
@@ -129,62 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// TOUCH
-// JS
-let isDragging = false;
-let startPosition = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
-
-carousel.addEventListener("touchstart", touchStart);
-carousel.addEventListener("touchmove", touchMove);
-carousel.addEventListener("touchend", touchEnd);
-carousel.addEventListener("touchcancel", touchEnd);
-
-function touchStart(event) {
-  isDragging = true;
-  startPosition = getPositionX(event);
-  currentTranslate = currentPosition;
-}
-
-function touchMove(event) {
-  if (isDragging) {
-    const currentPositionX = getPositionX(event);
-    currentTranslate = prevTranslate + currentPositionX - startPosition;
-  }
-}
-
-function touchEnd() {
-  isDragging = false;
-  currentPosition = currentTranslate;
-
-  const carouselWidth = carousel.offsetWidth;
-  const maxPosition = carousel.scrollWidth - carouselWidth;
-
-  // Snap to the nearest card
-  const slideWidth = carouselWidth / slideStep;
-  let currentIndex = Math.round(-currentPosition / slideWidth);
-  currentIndex = Math.max(
-    0,
-    Math.min(currentIndex, carousel.children.length - slideStep)
-  );
-  currentPosition = -currentIndex * slideWidth;
-
-  // Prevent carousel from going out of bounds
-  currentPosition = Math.max(-maxPosition, Math.min(0, currentPosition));
-
-  moveCarouselMob(currentPosition);
-}
-
-function moveCarouselMob(newPosition) {
-  carousel.style.transform = `translateX(${newPosition}px)`;
-}
-
-function getPositionX(event) {
-  return event.touches ? event.touches[0].clientX : event.clientX;
-}
-
-// TOUCH
+// CAROUSEL AND TOUCH FUNCTION
 
 let slider = document.querySelector(".slider-carousel"),
   sliderList = slider.querySelector(".slider-list-carousel"),
@@ -214,7 +75,7 @@ let slider = document.querySelector(".slider-carousel"),
     }px, 0px, 0px)`;
 
     prev.classList.toggle("disabled", slideIndex === 0);
-    next.classList.toggle("disabled", slideIndex === 2);
+    next.classList.toggle("disabled", slideIndex === slides.length);
   },
   swipeStart = function () {
     let evt = getEvent();
