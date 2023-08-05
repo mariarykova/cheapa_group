@@ -128,3 +128,51 @@ document.addEventListener("DOMContentLoaded", function () {
     menu.classList.toggle("show");
   });
 });
+
+// TOUCH
+// JS
+let isDragging = false;
+let startPosition = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+
+// Touch events
+carousel.addEventListener("touchstart", touchStart);
+carousel.addEventListener("touchmove", touchMove);
+carousel.addEventListener("touchend", touchEnd);
+carousel.addEventListener("touchcancel", touchEnd);
+
+function touchStart(event) {
+  isDragging = true;
+  startPosition = getPositionX(event);
+  animationID = requestAnimationFrame(animation);
+}
+
+function touchMove(event) {
+  if (isDragging) {
+    const currentPosition = getPositionX(event);
+    currentTranslate = prevTranslate + currentPosition - startPosition;
+  }
+}
+
+function touchEnd() {
+  isDragging = false;
+  cancelAnimationFrame(animationID);
+
+  // Adjust the currentTranslate so that the carousel snaps to the nearest card
+  const slideWidth = carousel.clientWidth;
+  currentIndex = Math.round(-currentTranslate / slideWidth);
+  prevTranslate = -currentIndex * slideWidth;
+
+  // Calculate the new position for the carousel based on the currentIndex
+  const newPosition = -currentIndex * slideWidth;
+  moveCarouselTouch(newPosition);
+}
+
+function getPositionX(event) {
+  return event.type.includes("mouse") ? event.pageX : event.touches[0].clientX;
+}
+
+function moveCarouselTouch(newPosition) {
+  carousel.style.transform = `translateX(${newPosition}px)`;
+}
