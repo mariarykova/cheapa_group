@@ -51,8 +51,6 @@ function createSlider(card) {
   const nextBtn = card.querySelector(".next-btn");
   const slides = card.querySelector(".slides");
 
-  console.log(card);
-
   let currentIndex = 0;
 
   function showSlide(index) {
@@ -61,15 +59,12 @@ function createSlider(card) {
   }
 
   prevBtn.addEventListener("click", () => {
-    console.log("prev");
     currentIndex =
       (currentIndex - 1 + slides.children.length) % slides.children.length;
     showSlide(currentIndex);
   });
 
   nextBtn.addEventListener("click", () => {
-    console.log("next");
-
     currentIndex = (currentIndex + 1) % slides.children.length;
     showSlide(currentIndex);
   });

@@ -25,7 +25,6 @@ function moveCarousel(direction) {
       ? currentPosition - slideStep * slideDistance
       : currentPosition + slideStep * slideDistance;
 
-  console.log("click1");
   if (newPosition <= 0 && newPosition >= -maxPosition) {
     carousel.style.transform = `translateX(${newPosition}px)`;
     currentPosition = newPosition;
