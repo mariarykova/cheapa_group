@@ -1,0 +1,192 @@
+[
+  {
+    "id": 0,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Car name",
+    "year": 2020,
+    "model": "Model Car",
+    "make": "Maker",
+    "description": "some cars description",
+    "images": [
+      {
+        "img": "./images/img_1.jpg"
+      },
+      {
+        "img": "./images/img_2.jpg"
+      },
+      {
+        "img": "./images/img_3.jpg"
+      }
+    ]
+  }
+]

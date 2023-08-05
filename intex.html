@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Cheapa Group</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header_logo">
+        <img class="carIcon" src="./images/car.svg" alt="Car Hiring" />
+        <div>Cheapa Group</div>
+      </div>
+      <div class="header_menu desktop">
+        <a href="#home">Home</a>
+        <a href="#about">About us</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contacts">Contacts</a>
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contacts">Contacts</a></li>
+        </ul>
+      </div>
+      <div class="burger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </header>
+    <main>
+      <section class="main" id="home">
+        <div class="main_info">
+          <h1 class="main_title">CHEAPA GROUP</h1>
+          <h3 class="main_subtitle">Hire a car</h3>
+          <button class="gallery_btn">
+            <a href="./gallery.html">Watch Cars</a>
+          </button>
+        </div>
+        <div class="main_img"></div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="about_img"></div>
+        <div class="about_main_text">
+          <div class="about_main_title">About Us</div>
+          <p class="about_main_description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi enim
+            massa, feugiat a ex vel, hendrerit cursus turpis. Donec placerat
+            dolor at lobortis bibendum. Ut vehicula ipsum augue, sed bibendum
+            lorem lacinia elementum. Morbi ac viverra magna. In quis
+            pellentesque urna, non ullamcorper lorem. Praesent mi augue,
+            ullamcorper in urna ut, laoreet aliquet massa. Curabitur vel finibus
+            diam. Duis non dui convallis, eleifend libero a, viverra dolor.
+            Phasellus dignissim odio massa, et elementum dui lacinia vitae.
+            Nulla at consectetur magna. Duis a hendrerit dui. Etiam euismod
+            tristique nunc, eu rutrum risus ornare et. Morbi tempus vel est in
+            feugiat.
+          </p>
+          <button class="gallery_btn">
+            <a href="./gallery.html">Watch All Cars</a>
+          </button>
+        </div>
+      </section>
+      <section class="gallery" id="gallery">
+        <div class="gallery_title">Cars to Hire</div>
+        <div class="carousel_wrapper">
+          <button class="carousel_card_btn arrow-right desktop">
+            <img src="./images/arrow_right.svg" alt="" />
+          </button>
+
+          <div class="carousel-container">
+            <div class="carousel"></div>
+          </div>
+
+          <button class="carousel_card_btn arrow-left desktop">
+            <img src="./images/arrow_left.svg" alt="" />
+          </button>
+        </div>
+
+        <div class="carousel_btns_mobile">
+          <button
+            class="carousel_card_btn arrow-right arrow-right-mobile mobile"
+          >
+            <img src="./images/arrow_right.svg" alt="" />
+          </button>
+          <button class="carousel_card_btn arrow-left arrow-left-mobile mobile">
+            <img src="./images/arrow_left.svg" alt="" />
+          </button>
+        </div>
+
+        <button class="gallery_btn">
+          <a href="./gallery.html">Watch All Cars</a>
+        </button>
+      </section>
+      <footer class="contacts" id="contacts">
+        <div class="contacts_title">GET IN TOUCH</div>
+        <div class="contacts_info">
+          <div class="contacts_info_item">
+            <img src="./images/location-sign-svgrepo-com.svg" alt="" />
+            <div>Location</div>
+          </div>
+          <div class="contacts_info_item">
+            <img src="./images/mail-alt-3-svgrepo-com.svg" alt="" />
+            <div>test@mail.ru</div>
+          </div>
+          <div class="contacts_info_item">
+            <img src="./images/smartphone-svgrepo-com.svg" alt="" />
+            <div>0606563882</div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+  <script src="script.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+</html>
