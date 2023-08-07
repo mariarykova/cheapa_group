@@ -241,6 +241,10 @@ body {
   font-size: 18px;
 }
 
+a {
+  color: inherit;
+}
+
 .gallery_btn {
   padding: 10px 10px;
   background-color: #a1a3a4;
