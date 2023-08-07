@@ -99,7 +99,7 @@ body {
 }
 
 .main_img {
-  background-image: url(./images/image_main.png);
+  background-image: url(../images/image_main.png);
   width: 700px;
   height: 700px;
 
@@ -118,7 +118,7 @@ body {
 }
 
 .about_img {
-  background-image: url(./images/car_img_1.jpg);
+  background-image: url(../images/car_img_1.jpg);
   width: 640px;
   height: 360px;
 
