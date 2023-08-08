@@ -197,6 +197,12 @@ body {
 .carousel_card_btn img {
   width: 50px;
   height: 50px;
+  transition: 500ms;
+}
+
+.carousel_card_btn img:hover {
+  transform: scale(1.1);
+  filter: invert(55%) sepia(100%) saturate(3.5);
 }
 
 .image_container {
@@ -259,6 +265,7 @@ a {
 .gallery_btn:hover {
   background-color: #c44924;
   color: white;
+  transform: scale(1.1);
 }
 
 .gallery_btn a {
@@ -362,11 +369,11 @@ a {
   top: 50%;
   transform: translateY(-50%);
   padding: 10px 20px;
-  background-color: #333;
+  background-color: rgb(51, 51, 51, 0.7);
   color: #fff;
   border: none;
   cursor: pointer;
-  opacity: 0; /* Initially hide the buttons */
+  opacity: 0;
   transition: opacity 0.3s;
 }
 
@@ -381,6 +388,11 @@ a {
 .slider-container:hover .prev-btn,
 .slider-container:hover .next-btn {
   opacity: 1;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: rgb(51, 51, 51, 1);
 }
 
 /*GALLERY SLIDER*/
