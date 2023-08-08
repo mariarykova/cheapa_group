@@ -328,7 +328,6 @@ a {
 .gallery_page_text {
   max-width: 700px;
   margin: 0 auto;
-  margin-bottom: 50px;
 }
 
 /* SLIDER */
@@ -398,6 +397,10 @@ a {
 
 .car_image_card_gallery {
   width: 640px;
+}
+
+.gallery_main .gallery_btn {
+  margin-bottom: 30px;
 }
 
 /*BURGER MENU*/
@@ -541,6 +544,58 @@ a {
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+/* POP UP WITH INFORMATION */
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.popup h2 {
+  padding-bottom: 20px;
+}
+
+.popup .gallery_btn {
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.popup input {
+  width: 100%;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: start;
 }
 
 @media (max-width: 1200px) {

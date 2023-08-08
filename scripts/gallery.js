@@ -92,9 +92,51 @@ function observeCardGallery() {
     });
   });
 
-  // Start observing the card gallery for changes
   observer.observe(cardContainer, { childList: true });
 }
-
-// Call the function to observe the card gallery for changes
 observeCardGallery();
+
+// POP UP SCRIPT
+
+const openPopupButton = document.getElementById("openPopup");
+const closePopupButton = document.getElementById("closePopup");
+const popup = document.getElementById("popup");
+const infoForm = document.getElementById("infoForm");
+const content = document.querySelector(".popup-content");
+
+openPopupButton.addEventListener("click", () => {
+  popup.style.display = "block";
+});
+
+closePopupButton.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+infoForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  emailjs
+    .send("service_x5q51jj", "template_aars4q9", {
+      name: infoForm.name.value,
+      phone: infoForm.phone.value,
+      email: infoForm.email.value,
+    })
+    .then(
+      function (response) {
+        console.log("Email sent successfully:", response);
+        infoForm.style.display = "none";
+        document.querySelector(".popup-content h2").style.display = "none";
+        const message = `<div>Thank you! We will contact you soon!</div>`;
+        document.getElementById("message").innerHTML = message;
+      },
+      function (error) {
+        console.log("Email sending failed:", error);
+      }
+    );
+});
+
+document.addEventListener("click", (e) => {
+  if (!content.contains(e.target) && e.target !== openPopupButton) {
+    popup.style.display = "none";
+  }
+});
