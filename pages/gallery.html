@@ -52,21 +52,24 @@
         habitasse platea dictumst. Mauris non tortor ex. Aenean sodales dui at
         dolor mollis, id accumsan mi venenatis.
       </div>
-      <button id="openPopup" class="gallery_btn">Book a car</button>
       <div id="popup" class="popup">
         <div class="popup-content">
           <span class="close-btn" id="closePopup">&times;</span>
-          <div id="message"></div>
-          <h2>Leave your contact information</h2>
-          <form id="infoForm">
-            <label for="name">Your name*</label>
-            <input type="text" id="name" name="name" required />
-            <label for="phone">Phone Number*</label>
-            <input type="tel" id="phone" name="phone" required />
-            <label for="email">Email*</label>
-            <input type="email" id="email" name="email" required />
-            <button type="submit" class="gallery_btn">Submit</button>
-          </form>
+          <div id="message">
+            <div>Thank you! We will contact you soon!</div>
+          </div>
+          <div id="form">
+            <h2>Leave your contact information</h2>
+            <form id="infoForm">
+              <label for="name">Your name*</label>
+              <input type="text" id="name" name="name" required />
+              <label for="phone">Phone Number*</label>
+              <input type="tel" id="phone" name="phone" required />
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" required />
+              <button type="submit" class="gallery_btn">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
       <div class="car_cards_gallery"></div>
@@ -94,7 +97,7 @@
     ></script>
     <script type="text/javascript">
       (function () {
-        emailjs.init("7BorYvCWbHRY9z1Zq");
+        emailjs.init("RHIEJsmmmr38CMDNA");
       })();
     </script>
     <script src="../scripts/burger-menu.js" type="module"></script>

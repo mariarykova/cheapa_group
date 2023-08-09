@@ -253,18 +253,17 @@ a {
 
 .gallery_btn {
   padding: 10px 10px;
-  background-color: #a1a3a4;
   cursor: pointer;
   border: none;
   width: 200px;
   font-size: 24px;
   transition: 0.2s ease-in-out;
   margin-top: 30px;
+  background-color: #c44924;
+  color: white;
 }
 
 .gallery_btn:hover {
-  background-color: #c44924;
-  color: white;
   transform: scale(1.1);
 }
 
@@ -332,9 +331,25 @@ a {
   justify-content: center;
 }
 
+.card_car_wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+
+.card_car_wrapper .card_car_info {
+  padding: 0;
+}
+
+.card_car_wrapper .gallery_btn {
+  align-self: flex-end;
+  margin-bottom: 0;
+}
+
 .gallery_page_text {
   max-width: 700px;
   margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 /* SLIDER */
@@ -409,10 +424,6 @@ a {
 
 .car_image_card_gallery {
   width: 640px;
-}
-
-.gallery_main .gallery_btn {
-  margin-bottom: 30px;
 }
 
 /*BURGER MENU*/
@@ -610,6 +621,10 @@ form {
   align-items: start;
 }
 
+#message {
+  display: none;
+}
+
 @media (max-width: 1200px) {
   .carousel-container {
     width: 100%;
@@ -797,5 +812,13 @@ form {
   .slider-list-carousel {
     width: 320px;
     height: 375px;
+  }
+
+  .card_car_wrapper {
+    flex-direction: column;
+  }
+
+  .card_car_wrapper .gallery_btn {
+    align-self: center;
   }
 }

@@ -28,15 +28,18 @@ function showCarCardsGallery(data) {
             <button class="prev-btn">Previous</button>
             <button class="next-btn">Next</button>
         </div>
-
+    <div class="card_car_wrapper">
         <div class="card_car_info" data-card-id=${card.id}>
-                      <div class="card_car_title">${card.title}</div>
-                      <div class="card_car_year"><strong>Year:</strong> ${card.year}</div>
-                      <div class="card_car_model"><strong>Model:</strong> ${card.model}</div>
-                      <div class="card_car_make"><strong>Make:</strong> ${card.make}</div>
-                      <div class="card_car_description"><strong>Desription:</strong> ${card.description}</div>
-                    </div>
-                  </div>
+            <div class="card_car_title">${card.title}</div>
+            <div class="card_car_year"><strong>Year:</strong> ${card.year}</div>
+            <div class="card_car_model"><strong>Model:</strong> ${card.model}</div>
+            <div class="card_car_make"><strong>Make:</strong> ${card.make}</div>
+            <div class="card_car_description"><strong>Desription:</strong> ${card.description}</div>
+        </div>
+        <button id="openPopup" class="gallery_btn">Book a car</button>
+        </div>
+
+    </div>
         `;
   });
   gallery.innerHTML = cardsNew;
@@ -85,6 +88,7 @@ function observeCardGallery() {
             const cards = document.querySelectorAll(".card_container");
             cards.forEach((card) => {
               createSlider(card);
+              createPopup(card);
             });
           }
         });
@@ -98,25 +102,23 @@ observeCardGallery();
 
 // POP UP SCRIPT
 
-const openPopupButton = document.getElementById("openPopup");
-const closePopupButton = document.getElementById("closePopup");
-const popup = document.getElementById("popup");
-const infoForm = document.getElementById("infoForm");
 const content = document.querySelector(".popup-content");
+const popup = document.querySelector("#popup");
+const closePopupButton = document.querySelector("#closePopup");
+const infoForm = document.querySelector("#infoForm");
 
-openPopupButton.addEventListener("click", () => {
-  popup.style.display = "block";
-});
-
-closePopupButton.addEventListener("click", () => {
-  popup.style.display = "none";
-});
+function createPopup(card) {
+  const openPopupButton = card.querySelector("#openPopup");
+  openPopupButton.addEventListener("click", () => {
+    popup.style.display = "block";
+  });
+}
 
 infoForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   emailjs
-    .send("service_x5q51jj", "template_aars4q9", {
+    .send("service_8nhgcxw", "template_aj87i0k", {
       name: infoForm.name.value,
       phone: infoForm.phone.value,
       email: infoForm.email.value,
@@ -124,10 +126,8 @@ infoForm.addEventListener("submit", (event) => {
     .then(
       function (response) {
         console.log("Email sent successfully:", response);
-        infoForm.style.display = "none";
-        document.querySelector(".popup-content h2").style.display = "none";
-        const message = `<div>Thank you! We will contact you soon!</div>`;
-        document.getElementById("message").innerHTML = message;
+        document.getElementById("form").style.display = "none";
+        document.getElementById("message").style.display = "block";
       },
       function (error) {
         console.log("Email sending failed:", error);
@@ -135,8 +135,18 @@ infoForm.addEventListener("submit", (event) => {
     );
 });
 
-document.addEventListener("click", (e) => {
-  if (!content.contains(e.target) && e.target !== openPopupButton) {
+closePopupButton.addEventListener("click", () => {
+  document.getElementById("infoForm").reset();
+  document.getElementById("message").style.display = "none";
+  document.getElementById("form").style.display = "block";
+  popup.style.display = "none";
+});
+
+popup.addEventListener("click", (e) => {
+  if (!content.contains(e.target)) {
+    document.getElementById("infoForm").reset();
+    document.getElementById("message").style.display = "none";
+    document.getElementById("form").style.display = "block";
     popup.style.display = "none";
   }
 });
