@@ -47,7 +47,6 @@ function showCarCardsGallery(data) {
 
 // SLIDE FUNCTION
 
-// Function to create a slider for each card
 function createSlider(card) {
   const slider = card.querySelector(".slider");
   const prevBtn = card.querySelector(".prev-btn");
@@ -72,14 +71,11 @@ function createSlider(card) {
     showSlide(currentIndex);
   });
 
-  // Show the initial slide
   showSlide(currentIndex);
 }
 
-// Function to observe changes in the card gallery and initialize sliders for new cards
 function observeCardGallery() {
   const cardContainer = document.querySelector(".car_cards_gallery");
-  // Create a MutationObserver to observe changes in the card gallery
   const observer = new MutationObserver((mutationsList) => {
     mutationsList.forEach((mutation) => {
       if (mutation.type === "childList") {
