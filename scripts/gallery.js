@@ -118,7 +118,7 @@ infoForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   emailjs
-    .send("service_8nhgcxw", "template_aj87i0k", {
+    .send("service_8nhgcxw", "template_pwatu9f", {
       name: infoForm.name.value,
       phone: infoForm.phone.value,
       email: infoForm.email.value,
